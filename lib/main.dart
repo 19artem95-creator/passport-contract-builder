@@ -39,7 +39,7 @@ class _HomeScreenState extends State<HomeScreen> {
       setState(() => _status = "Распознавание текста...");
 
       final inputImage = InputImage.fromFilePath(path);
-      final textRecognizer = TextRecognizer(script: TextRecognitionScript.cyrillic);
+      final textRecognizer = TextRecognizer();
       final recognizedText = await textRecognizer.processImage(inputImage);
 
       String text = recognizedText.text;
