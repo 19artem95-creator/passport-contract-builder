@@ -23,10 +23,13 @@ jobs:
           flutter-version: '3.24.0'
           channel: 'stable'
 
-      - name: Repair Android Structure
+      - name: Repair Android Structure & Fix SDK 35
         run: |
           rm -rf android
           flutter create . --project-name=passport_contract_builder --platforms=android --org=com.example
+          sed -i 's/compileSdk = flutter.compileSdkVersion/compileSdk = 35/g' android/app/build.gradle
+          sed -i 's/targetSdk = flutter.targetSdkVersion/targetSdk = 35/g' android/app/build.gradle
+          sed -i 's/1.9.22/2.0.0/g' android/settings.gradle
 
       - name: Install dependencies
         run: flutter pub get
@@ -39,4 +42,3 @@ jobs:
         with:
           name: app-release
           path: build/app/outputs/flutter-apk/app-release.apk
-
