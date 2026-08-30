@@ -26,7 +26,7 @@ jobs:
       - name: Repair Android Structure
         run: |
           rm -rf android
-          flutter create . --platforms=android --org=com.example
+          flutter create . --project-name=passport_contract_builder --platforms=android --org=com.example
 
       - name: Install dependencies
         run: flutter pub get
@@ -39,3 +39,4 @@ jobs:
         with:
           name: app-release
           path: build/app/outputs/flutter-apk/app-release.apk
+
