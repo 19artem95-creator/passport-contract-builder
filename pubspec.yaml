@@ -1,4 +1,4 @@
-name: passport_contract_app
+name: passport_contract_builder
 description: "App for scanning passports"
 publish_to: 'none'
 version: 1.0.0+1
