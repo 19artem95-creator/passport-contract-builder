@@ -17,9 +17,13 @@ jobs:
           distribution: 'zulu'
           java-version: '17'
 
-      - name: Install Android SDK 35
-        run: |
-          yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --install "platforms;android-35" "build-tools;35.0.0"
+      - name: Setup Android SDK 35
+        uses: android-actions/setup-android@v3
+        with:
+          cmdline-tools-version: '11.0'
+
+      - name: Install Platform 35
+        run: sdkmanager "platforms;android-35" "build-tools;35.0.0"
 
       - name: Set up Flutter
         uses: subosito/flutter-action@v2
