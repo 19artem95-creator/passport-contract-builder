@@ -23,18 +23,10 @@ jobs:
           flutter-version: '3.24.0'
           channel: 'stable'
 
-      - name: Accept Android Licenses & Pre-install SDK 35
-        run: |
-          yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --licenses || true
-          $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager "platforms;android-35" "build-tools;35.0.0"
-
-      - name: Repair Android Structure & Fix SDK 35
+      - name: Repair Android Structure
         run: |
           rm -rf android
           flutter create . --project-name=passport_contract_builder --platforms=android --org=com.example
-          sed -i 's/compileSdk = flutter.compileSdkVersion/compileSdk = 35/g' android/app/build.gradle
-          sed -i 's/targetSdk = flutter.targetSdkVersion/targetSdk = 35/g' android/app/build.gradle
-          sed -i 's/1.9.22/2.0.0/g' android/settings.gradle
 
       - name: Install dependencies
         run: flutter pub get
